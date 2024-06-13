@@ -19,7 +19,8 @@ export interface RootStateImages {
     error: ErrorState;
     loading: boolean;
     page: number;
-    totalPages?: number
+    totalPages?: number;
+    perPage?: number;
 }
 
 export interface PaginateProps {

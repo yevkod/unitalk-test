@@ -8,8 +8,9 @@ export const fetchData = createAsyncThunk(
     async(_, thunkAPI) => {
         const state = thunkAPI.getState() as RootState;
         const page = state.images.page;
+        const perPage = state.images.perPage;
         try {
-            const response = await axios.get(`${API}/photos?page=${page}&client_id=${process.env.REACT_APP_USER_KEY}`);
+            const response = await axios.get(`${API}/photos?page=${page}&per_page=${perPage}&client_id=${process.env.REACT_APP_USER_KEY}`);
             const linkHeader = response.headers['link'];
             let totalPages = 1;
 

@@ -44,7 +44,7 @@ export const Images = () => {
               <Card>
                 <CardMedia
                   component="img"
-                  height="140"
+                  height="180"
                   image={item.urls.small}
                   alt="Image"
                   className={s.image}

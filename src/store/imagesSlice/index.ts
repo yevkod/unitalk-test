@@ -12,6 +12,7 @@ const initialState: RootStateImages = {
     loading: true,
     page: 1,
     totalPages: 1,
+    perPage: 12,
 };
 
 const imagesSlice = createSlice({
