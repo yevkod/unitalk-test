@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { Image } from '../../types';
 import { selectImages } from '../../store/imagesSlice';
-import { Grid, Card, CardMedia, CardContent, Typography } from '@mui/material';
+import { Grid, Card, CardMedia, CardContent, Typography, Box } from '@mui/material';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import s from './Images.module.css';
@@ -10,24 +10,24 @@ export const Images = () => {
   const imageStore = useSelector(selectImages);
 
   return (
-    <>
+    <Box>
       {imageStore.loading || !imageStore.images || imageStore.error.hasError ? (
-        <>
+        <Box>
           {imageStore.error.hasError && (
-            <>
+            <Box>
               <Typography variant="h6" color="error.main">
                 Error: {imageStore.error.errorMessage}
               </Typography>
-            </>
+            </Box>
           )}
           {!imageStore.images &&
             !imageStore.loading &&
             !imageStore.error.hasError && (
-              <>
+              <Box>
                 <Typography variant="h6" color="error.main">
                   No images...
                 </Typography>
-              </>
+              </Box>
             )}
           <Grid container spacing={2} padding={6}>
             {Array.from({ length: 6 }).map((_, index) => (
@@ -36,7 +36,7 @@ export const Images = () => {
               </Grid>
             ))}
           </Grid>
-        </>
+        </Box>
       ) : (
         <Grid container spacing={2} padding={6}>
           {imageStore.images.map((item: Image) => (
@@ -68,6 +68,6 @@ export const Images = () => {
           ))}
         </Grid>
       )}
-    </>
+    </Box>
   );
 };
