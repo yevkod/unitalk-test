@@ -23,7 +23,6 @@ export const Images = () => {
     );
   }
 
-
   return (
     <>
       {imageStore.loading || !imageStore.images ? (
