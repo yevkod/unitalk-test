@@ -5,6 +5,7 @@ import { AppDispatch } from '../../store';
 import { Header } from '../../components/Header/Header';
 import { Images } from '../../components/Images/Images';
 import { Paginate } from '../../components/Paginate/Paginate';
+import { Box } from '@mui/material';
 
 export const MainView = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -19,7 +20,7 @@ export const MainView = () => {
   };
 
   return (
-    <div>
+    <Box>
       <Header />
       <Images />
       <Paginate
@@ -27,6 +28,6 @@ export const MainView = () => {
         page={page}
         totalPages={totalPages}
       />
-    </div>
+    </Box>
   );
 };

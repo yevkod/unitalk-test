@@ -1,5 +1,5 @@
 import React from 'react'
-import { Pagination } from "@mui/material";
+import { Box, Pagination } from "@mui/material";
 import { PaginateProps } from '../../types';
 import s from './Paginate.module.css';
 
@@ -9,7 +9,7 @@ export const Paginate: React.FC<PaginateProps> = ({
   totalPages,
 }) => {
   return (
-    <div className={s.wrapper}>
+    <Box className={s.wrapper}>
       <Pagination
         count={totalPages}
         page={page}
@@ -18,6 +18,6 @@ export const Paginate: React.FC<PaginateProps> = ({
         showFirstButton
         showLastButton
       />
-    </div>
+    </Box>
   );
 };
