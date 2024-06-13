@@ -1,19 +1,13 @@
 import { useSelector } from 'react-redux';
 import { Image } from '../../types';
-import {
-  selectError,
-  selectImages,
-  selectLoading,
-} from '../../store/imagesSlice';
+import { selectImages } from '../../store/imagesSlice';
 import { Grid, Card, CardMedia, CardContent, Typography } from '@mui/material';
 import s from './Images.module.css';
 
 export const Images = () => {
-  const images = useSelector(selectImages);
-  const error = useSelector(selectError);
-  const loading = useSelector(selectLoading);
+  const imageStore = useSelector(selectImages);
 
-  if (loading) {
+  if (imageStore.loading) {
     return (
       <Typography variant="body2" color="text.secondary">
         Loading...
@@ -21,17 +15,25 @@ export const Images = () => {
     );
   }
 
-  if (error?.hasError) {
+  if (imageStore.error.hasError) {
     return (
       <Typography variant="body2" color="text.secondary">
-        Error: {error.errorMessage}
+        Error: {imageStore.error.errorMessage}
       </Typography>
     );
   }
 
+  if (!imageStore.images) {
+    return (
+      <Typography variant="body2" color="text.secondary">
+        Loading...
+      </Typography>
+    );
+  }
+  
   return (
     <Grid container spacing={2} padding={6}>
-      {images.map((item: Image) => (
+      {imageStore.images.map((item: Image) => (
         <Grid item key={item.id} xs={12} sm={6} md={4}>
           <Card>
             <CardMedia

@@ -1,25 +1,23 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { RootState } from '../../types';
+import { RootStateImages } from '../../types';
 import { fetchData } from '../../service';
+import { RootState } from '../index';
 
-const initialState: RootState = {
-    images: {
-        images: []
-    },
+const initialState: RootStateImages = {
+    images: null,
     error: {
         hasError: false,
         errorMessage: null,
     },
-    loading: false,
+    loading: true,
 };
-
 
 const imagesSlice = createSlice({
     name: 'images',
     initialState,
     reducers: {
         setImages(state, action) {
-            state.images.images = action.payload;
+            state.images = action.payload;
         },
         setError(state, action: PayloadAction<{ hasError: boolean, errorMessage: string | null }>) {
             state.error = action.payload;
@@ -42,6 +40,4 @@ const imagesSlice = createSlice({
 
 export const { setImages, setError } = imagesSlice.actions;
 export default imagesSlice.reducer;
-export const selectImages = (state: RootState) => state.images.images;
-export const selectError = (state: RootState) => state.error;
-export const selectLoading = (state: RootState) => state.loading;
+export const selectImages = (state: RootState) => state.images;

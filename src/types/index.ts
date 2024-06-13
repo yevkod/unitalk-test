@@ -14,8 +14,8 @@ export interface ErrorState {
     errorMessage: string | null;
 }
 
-export interface RootState {
-    images: {images: Image[]};
+export interface RootStateImages {
+    images: Image[] | null;
     error: ErrorState;
     loading: boolean;
 }
