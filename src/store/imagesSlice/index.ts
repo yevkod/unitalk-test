@@ -10,6 +10,7 @@ const initialState: RootStateImages = {
         errorMessage: null,
     },
     loading: true,
+    page: 1,
 };
 
 const imagesSlice = createSlice({
@@ -21,6 +22,9 @@ const imagesSlice = createSlice({
         },
         setError(state, action: PayloadAction<{ hasError: boolean, errorMessage: string | null }>) {
             state.error = action.payload;
+        },
+        setPage(state, action: PayloadAction<number>) {
+            state.page = action.payload;
         },
     },
     extraReducers: (builder) => {
@@ -38,6 +42,7 @@ const imagesSlice = createSlice({
     },
 });
 
-export const { setImages, setError } = imagesSlice.actions;
+export const { setImages, setError, setPage } = imagesSlice.actions;
 export default imagesSlice.reducer;
 export const selectImages = (state: RootState) => state.images;
+export const selectPage = (state: RootState) => state.images.page;

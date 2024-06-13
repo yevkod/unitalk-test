@@ -1,10 +1,17 @@
 import { useSelector } from 'react-redux';
 import { Image } from '../../types';
-import { selectImages } from '../../store/imagesSlice';
-import { Grid, Card, CardMedia, CardContent, Typography } from '@mui/material';
+import { selectImages} from '../../store/imagesSlice';
+import {
+  Grid,
+  Card,
+  CardMedia,
+  CardContent,
+  Typography,
+} from '@mui/material';
 import s from './Images.module.css';
 
 export const Images = () => {
+
   const imageStore = useSelector(selectImages);
 
   if (imageStore.loading) {
@@ -30,7 +37,7 @@ export const Images = () => {
       </Typography>
     );
   }
-  
+
   return (
     <Grid container spacing={2} padding={6}>
       {imageStore.images.map((item: Image) => (
