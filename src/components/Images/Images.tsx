@@ -29,14 +29,6 @@ export const Images = () => {
     );
   }
 
-  if (images.length !== 0) {
-    return (
-      <Typography variant="body2" color="text.secondary">
-        No images available...
-      </Typography>
-    );
-  }
-
   return (
     <Grid container spacing={2} padding={6}>
       {images.map((item: Image) => (
