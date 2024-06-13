@@ -19,9 +19,11 @@ export interface RootStateImages {
     error: ErrorState;
     loading: boolean;
     page: number;
+    totalPages?: number
 }
 
 export interface PaginateProps {
     changePage: (event: React.ChangeEvent<unknown>, value: number) => void;
     page: number;
+    totalPages?: number;
 }

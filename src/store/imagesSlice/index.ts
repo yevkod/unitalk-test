@@ -11,6 +11,7 @@ const initialState: RootStateImages = {
     },
     loading: true,
     page: 1,
+    totalPages: 1,
 };
 
 const imagesSlice = createSlice({
@@ -32,8 +33,9 @@ const imagesSlice = createSlice({
             state.loading = true;
         });
         builder.addCase(fetchData.fulfilled, (state, action) => {
-            state.images = action.payload;
+            state.images = action.payload.data;
             state.loading = false;
+            state.totalPages = action.payload.totalPages;
         });
         builder.addCase(fetchData.rejected, (state, action) => {
             state.error = { hasError: true, errorMessage: action.error.message || 'An unknown error occurred' };
@@ -46,3 +48,4 @@ export const { setImages, setError, setPage } = imagesSlice.actions;
 export default imagesSlice.reducer;
 export const selectImages = (state: RootState) => state.images;
 export const selectPage = (state: RootState) => state.images.page;
+export const selectTotalPages = (state: RootState) => state.images.totalPages;

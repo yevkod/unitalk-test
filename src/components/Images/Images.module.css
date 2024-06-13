@@ -6,3 +6,7 @@
 .image:hover {
   transform: scale(1.2);
 }
+
+.skeleton {
+  border-radius: 5px;
+}

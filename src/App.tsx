@@ -1,23 +1,15 @@
 import React, { useEffect } from 'react';
 import './App.css';
-import { Header } from './components/Header/Header';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from './store';
 import { fetchData } from './service';
-import { Images } from './components/Images/Images';
-import { selectPage, setPage } from './store/imagesSlice';
-import { Paginate } from './components/Paginate/Paginate';
+import { selectPage } from './store/imagesSlice';
+import { SkeletonTheme } from 'react-loading-skeleton';
+import { MainView } from './pages/Main/MainView';
 
 export const App = () => {
   const dispatch = useDispatch<AppDispatch>();
   const page = useSelector(selectPage);
-
-  const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
-    value: number
-  ) => {
-    dispatch(setPage(value));
-  };
 
   useEffect(() => {
     dispatch(fetchData());
@@ -25,9 +17,9 @@ export const App = () => {
 
   return (
     <div className="App">
-      <Header />
-      <Images />
-      <Paginate changePage={handlePageChange} page={page} />
+      <SkeletonTheme baseColor="#202020" highlightColor="#444" enableAnimation>
+        <MainView />
+      </SkeletonTheme>
     </div>
   );
-}
+};
